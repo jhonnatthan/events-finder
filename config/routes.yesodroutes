@@ -3,16 +3,21 @@
 
 /static StaticR Static appStatic
 
-/favicon.ico    FaviconR    GET
-/robots.txt     RobotsR     GET
+/favicon.ico        FaviconR        GET
+/robots.txt         RobotsR         GET
 
-/               HomeR       GET
+/                   HomeR           GET
 
-/estilo         EstiloR     GET POST
-/evento         EventoR     GET POST
-/confirmacao    ConfirmacaoR POST
+/estilos            EstiloListR     GET
+/estilo/novo        EstiloNewR      GET POST
 
-/login          LoginR      GET POST
-/register       UsuarioR       GET POST
-/logout         LogoutR     GET
+/eventos            EventoListR     GET
+/eventos/novo       EventoNewR      GET POST
+/evento/#EventoId   EventoR         GET POST DELETE
+
+/confirmacao        ConfirmacaoR    POST
+
+/login              LoginR          GET POST
+/register           UsuarioR        GET POST
+/logout             LogoutR         GET
 
