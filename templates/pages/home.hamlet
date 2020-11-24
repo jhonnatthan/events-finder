@@ -1,2 +1,16 @@
-<h1>
-    Home
+<div .container>
+  <div .jumbotron>
+    <h2>
+        Seja bem vindo ao Events Finder, aqui você encontra os eventos que estão rolando na cidade
+    $maybe _ <- session
+        <p>
+            Parabéns, você está logado
+        <a .btn .btn-primary href=@{EventoListR} role="button">
+            Ver eventos
+    $nothing
+        <p>
+            Você ainda não está logado, crie uma conta ou logue-se
+        <a .btn .btn-primary href=@{UsuarioR} role="button">
+            Fazer cadastro
+        <a .btn .btn-primary href=@{LoginR} role="button">
+            Fazer login
