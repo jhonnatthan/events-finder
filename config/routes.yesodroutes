@@ -2,16 +2,17 @@
 -- Syntax for this file here: https://www.yesodweb.com/book/routing-and-handlers
 
 /static StaticR Static appStatic
-/auth   AuthR   Auth   getAuth
 
-/favicon.ico FaviconR GET
-/robots.txt RobotsR GET
+/favicon.ico    FaviconR    GET
+/robots.txt     RobotsR     GET
 
-/ HomeR GET POST
+/               HomeR       GET
 
-/estilos GET POST
-/eventos GET POST
-/confirmacao POST
+/estilo         EstiloR     GET POST
+/evento         EventoR     GET POST
+/confirmacao    ConfirmacaoR POST
 
-/login GET POST
-/register GET POST
+/login          LoginR      GET POST
+/register       UsuarioR       GET POST
+/logout         LogoutR     GET
+
