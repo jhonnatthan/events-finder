@@ -1,0 +1,3 @@
+<form action=@{EstiloNewR} method=post>
+    ^{formWidget}
+    <input type=submit .btn.btn-primary value="Cadastrar Estilo">
