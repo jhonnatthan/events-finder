@@ -2,11 +2,11 @@
 -- Syntax for this file here: https://github.com/yesodweb/persistent/blob/master/docs/Persistent-entity-syntax.md
 
 Usuario
-    nome Text
-    email Text
+    nome        Text
+    email       Text
     UniqueEmail email
-    senha Text
-    isAdmin Bool
+    senha       Text
+    isAdmin     Bool
     deriving Show
 
 Estilo
@@ -16,7 +16,7 @@ Estilo
 Evento
     titulo Text
     localizacao Text
-    inicio UTCTime
+    dia Day
     estiloId EstiloId
     deriving Show
 
