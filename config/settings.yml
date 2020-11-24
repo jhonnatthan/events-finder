@@ -37,5 +37,5 @@ database:
   database: "_env:YESOD_PGDATABASE:d622va3c5l2jka"
   poolsize: "_env:YESOD_PGPOOLSIZE:10"
 
-copyright: Insert copyright statement here
+copyright: Jhonnatthan Santana
 #analytics: UA-YOURCODE
