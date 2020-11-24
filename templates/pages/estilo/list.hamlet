@@ -1,0 +1,20 @@
+$if isAdmin' == True
+    <a href=@{EstiloNewR} .btn.btn-primary.pull-right style="margin-bottom: 20px">
+        Cadastrar Estilo
+
+<h1>Estilos
+
+$if length estilos == 0
+    <p> 
+        Não existem estilos no momento
+$else
+    <table .table.table-striped.table-hover>
+        <thead>
+            <th>ID
+            <th>Nome do livro
+        <tbody>
+            $forall Entity estiloid estilo <- estilos
+                <tr>                    
+                    <td>#{show estiloid}
+                    <td>#{estiloNome estilo}
+            
