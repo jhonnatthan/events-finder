@@ -1,6 +1,6 @@
 <div .container-fluid>
   <nav .navbar.navbar-default style="margin-top: 15px">
-    <div .container-fluid>
+    <div .container-fluid.navbar-wrapper>
       <div .navbar-header>
         <button type="button" .navbar-toggle .collapsed data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span .sr-only>Toggle navigation
@@ -11,7 +11,7 @@
 
     <div #navbar .collapse.navbar-collapse>
         <ul .nav.navbar-nav>
-            <a .navbar-brand href=@{HomeR}>BookRecorder
+            <a .navbar-brand href=@{HomeR}>Events Finder
             $forall MenuItem label route _ <- navbarLeftFilteredMenuItems
                 <li :Just route == mcurrentRoute:.active>
                     <a href="@{route}">#{label}
@@ -30,16 +30,13 @@
 
             <li .active>#{title}
 
-$if (Just HomeR == mcurrentRoute)
-    ^{widget}
-$else
-    <div .container>
-        <div .row>
-            <div .col-md-12>
-                ^{widget}
+<div .container.content>
+    <div .row>
+        <div .col-md-12>
+            ^{widget}
 
 <!-- Footer -->
 <footer .footer>
     <div .container>
-        <p .text-muted>
+        <p .text-muted.text-center.text-footer>
             #{appCopyright $ appSettings master}
