@@ -42,8 +42,14 @@ import System.Log.FastLogger                (defaultBufSize, newStdoutLoggerSet,
 -- Don't forget to add new modules to your cabal file!
 import Handler.Common
 import Handler.Confirmacao
-import Handler.Estilo
+
+import Handler.EstiloList
+import Handler.EstiloNew
+
 import Handler.Evento
+import Handler.EventoList
+import Handler.EventoNew
+
 import Handler.Home
 import Handler.Login
 import Handler.Logout
