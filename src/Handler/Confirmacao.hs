@@ -11,11 +11,11 @@ getConfirmacaoR :: Handler Html
 getConfirmacaoR = 
     defaultLayout $ do
         setTitle "Events Finder - Home"
-        $(widgetFile "pages/home")
+        $(widgetFile "pages/mock")
 
 
 postConfirmacaoR :: Handler Html
 postConfirmacaoR = 
     defaultLayout $ do
         setTitle "Events Finder - Home"
-        $(widgetFile "pages/home")
+        $(widgetFile "pages/mock")

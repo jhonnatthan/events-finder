@@ -7,15 +7,21 @@ module Handler.Evento where
 
 import Import
 
-getEventoR :: Handler Html
-getEventoR = 
+getEventoR :: Key Evento -> Handler Html
+getEventoR eventoid = 
     defaultLayout $ do
         setTitle "Events Finder - Home"
-        $(widgetFile "pages/home")
+        $(widgetFile "pages/mock")
 
 
-postEventoR :: Handler Html
-postEventoR = 
+postEventoR :: Key Evento -> Handler Html
+postEventoR eventoid = 
     defaultLayout $ do
         setTitle "Events Finder - Home"
-        $(widgetFile "pages/home")
+        $(widgetFile "pages/mock")
+
+deleteEventoR :: Key Evento -> Handler Html
+deleteEventoR eventoid = 
+    defaultLayout $ do
+        setTitle "Events Finder - Home"
+        $(widgetFile "pages/mock")
