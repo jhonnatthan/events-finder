@@ -1,0 +1,22 @@
+$if isAdmin' == True
+    <a href=@{EventoNewR} .btn.btn-primary.pull-right style="margin-bottom: 20px">
+        Cadastrar Evento
+
+<h1>Eventos
+
+$if length eventos == 0
+    <p> 
+        Não existem eventos no momento
+$else
+    <table .table.table-striped.table-hover>
+        <thead>
+            <th>ID
+            <th>Titulo do evento
+            <th>Localização            
+        <tbody>
+            $forall Entity eventoid evento <- eventos
+                <tr>                    
+                    <td>#{show eventoid}
+                    <td>#{eventoTitulo evento}
+                    <td>#{eventoLocalizacao evento}
+            
