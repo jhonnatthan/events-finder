@@ -3,13 +3,11 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
-module Handler.Home where
+module Handler.Logout where
 
 import Import
 
-getHomeR :: Handler Html
-getHomeR = 
-    defaultLayout $ do
-        setTitle "Events Finder - Home"
-        $(widgetFile "pages/home")
-
+getLogoutR :: Handler Html
+getLogoutR = do
+    deleteSession "_ID"
+    redirect HomeR
