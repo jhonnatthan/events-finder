@@ -95,9 +95,11 @@ instance Yesod App where
     isAuthorized RobotsR _ = return Authorized
     isAuthorized LogoutR _ = return Authorized
     isAuthorized LoginR _ = return Authorized
-    isAuthorized EstiloR _ = return Authorized
-    isAuthorized EventoR _ = return Authorized
-    isAuthorized ConfirmacaoR _ = return Authorized
+    isAuthorized EstiloListR _ = isAuthenticated
+    isAuthorized EstiloNewR _ = isAdmin
+    isAuthorized EventoListR _ = isAuthenticated
+    isAuthorized EventoNewR _ = isAuthenticated
+    isAuthorized ConfirmacaoR _ = isAuthenticated
     isAuthorized HomeR _ = return Authorized
     isAuthorized UsuarioR _ = return Authorized
 
@@ -118,9 +120,24 @@ instance Yesod App where
                     , menuItemRoute = HomeR
                     , menuItemAccessCallback = True
                     }
+                , NavbarLeft $ MenuItem
+                    { menuItemLabel = "Estilos"
+                    , menuItemRoute = EstiloListR
+                    , menuItemAccessCallback = isJust muser
+                    }
+                , NavbarLeft $ MenuItem
+                    { menuItemLabel = "Eventos"
+                    , menuItemRoute = EventoListR
+                    , menuItemAccessCallback = isJust muser
+                    }
                 , NavbarRight $ MenuItem
                     { menuItemLabel = "Login"
                     , menuItemRoute = LoginR
+                    , menuItemAccessCallback = isNothing muser
+                    }
+                , NavbarRight $ MenuItem
+                    { menuItemLabel = "Cadastro"
+                    , menuItemRoute = UsuarioR
                     , menuItemAccessCallback = isNothing muser
                     }
                 , NavbarRight $ MenuItem
@@ -173,8 +190,14 @@ instance YesodBreadcrumbs App where
         :: Route App  -- ^ The route the user is visiting currently.
         -> Handler (Text, Maybe (Route App))
     breadcrumb HomeR = return ("Home", Nothing)
+    breadcrumb EstiloListR = return ("Estilos", Just HomeR)
+    breadcrumb EstiloNewR = return ("Novo estilo", Just EstiloListR)
+    breadcrumb EventoListR = return ("Eventos", Just HomeR)
+    breadcrumb EventoNewR = return ("Novo evento", Just EventoListR)
     breadcrumb LoginR = return ("Login", Just HomeR)
-    breadcrumb  _ = return ("home", Nothing)
+    breadcrumb UsuarioR = return ("Registro", Just HomeR)
+    breadcrumb LogoutR = return ("Logout", Just HomeR)
+    breadcrumb  _ = return ("Página", Nothing)
 
 -- How to run database actions.
 instance YesodPersist App where
