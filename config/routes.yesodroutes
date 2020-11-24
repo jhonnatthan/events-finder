@@ -9,6 +9,9 @@
 
 / HomeR GET POST
 
-/comments CommentR POST
+/estilos GET POST
+/eventos GET POST
+/confirmacao POST
 
-/profile ProfileR GET 
+/login GET POST
+/register GET POST
