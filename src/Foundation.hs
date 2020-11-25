@@ -99,7 +99,9 @@ instance Yesod App where
     isAuthorized EstiloNewR _ = isAdmin
     isAuthorized EventoListR _ = isAuthenticated
     isAuthorized EventoNewR _ = isAuthenticated
-    isAuthorized ConfirmacaoR _ = isAuthenticated
+    isAuthorized (ConfirmacaoR _) _ = isAuthenticated
+    isAuthorized (ConfirmacaoDelR _) _ = isAuthenticated
+    isAuthorized ConfirmacaoListR _ = isAuthenticated
     isAuthorized HomeR _ = return Authorized
     isAuthorized UsuarioR _ = return Authorized
 
@@ -128,6 +130,11 @@ instance Yesod App where
                 , NavbarLeft $ MenuItem
                     { menuItemLabel = "Eventos"
                     , menuItemRoute = EventoListR
+                    , menuItemAccessCallback = isJust muser
+                    }
+                , NavbarLeft $ MenuItem
+                    { menuItemLabel = "Confirmações"
+                    , menuItemRoute = ConfirmacaoListR
                     , menuItemAccessCallback = isJust muser
                     }
                 , NavbarRight $ MenuItem
@@ -190,6 +197,7 @@ instance YesodBreadcrumbs App where
         :: Route App  -- ^ The route the user is visiting currently.
         -> Handler (Text, Maybe (Route App))
     breadcrumb HomeR = return ("Home", Nothing)
+    breadcrumb ConfirmacaoListR = return ("Confirmações", Just HomeR)
     breadcrumb EstiloListR = return ("Estilos", Just HomeR)
     breadcrumb EstiloNewR = return ("Novo estilo", Just EstiloListR)
     breadcrumb EventoListR = return ("Eventos", Just HomeR)
