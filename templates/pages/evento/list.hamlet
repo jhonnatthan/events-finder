@@ -1,6 +1,5 @@
-$if isAdmin' == True
-    <a href=@{EventoNewR} .btn.btn-primary.pull-right style="margin-bottom: 20px">
-        Cadastrar Evento
+<a href=@{EventoNewR} .btn.btn-primary.pull-right style="margin-bottom: 20px">
+    Cadastrar Evento
 
 <h1>Eventos
 
@@ -10,13 +9,16 @@ $if length eventos == 0
 $else
     <table .table.table-striped.table-hover>
         <thead>
-            <th>ID
-            <th>Titulo do evento
-            <th>Localização            
+            <tr>
+                <th>Titulo do evento
+                <th>Localização
+                <th>Estilo
+                <th>Confirmação
+                <th>Ação
         <tbody>
             $forall Entity eventoid evento <- eventos
-                <tr>                    
-                    <td>#{show eventoid}
+                <tr> 
                     <td>#{eventoTitulo evento}
                     <td>#{eventoLocalizacao evento}
-            
+                    ^{showEventoEstilo evento eventoid usuarioid}                            
+                    
