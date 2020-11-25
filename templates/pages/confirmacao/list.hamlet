@@ -1,0 +1,25 @@
+<a href=@{EventoNewR} .btn.btn-primary.pull-right style="margin-bottom: 20px">
+    Cadastrar Evento
+
+<h1>Eventos
+
+$if length confirmacoes == 0
+    <p> 
+        Não existem eventos confirmados no momento
+$else
+    <table .table.table-striped.table-hover>
+        <thead>
+            <tr>
+                <th>Titulo do evento
+                <th>Localização
+                <th>Estilo
+                <th>Confirmação
+                <th>Ação
+        <tbody>
+            $forall Entity confirmacaoid confirmacao <- confirmacoes
+                <tr>                        
+                    ^{showConfirmacaoEvento confirmacao}
+                    <td>#{confirmacaoTipo confirmacao}
+                    <td>
+                        <form action=@{ConfirmacaoDelR confirmacaoid} method="post">
+                            <input .btn.btn-primary type="submit" value="Remover">
