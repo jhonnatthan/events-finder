@@ -9,15 +9,8 @@ module Handler.EventoNew where
 import Import
 import Yesod.Form.Bootstrap3 (BootstrapFormLayout (..), renderBootstrap3)
 
-data NewEvento = NewEvento {
-        newEventoTitulo             :: Text
-    ,   newEventoLocalizacao        :: Text
-    ,   newEventoDia                :: Day
-    ,   newEventoEstiloId           :: Key Estilo
-}
-
-formEvento :: [(Text, Key Estilo)] -> Form NewEvento
-formEvento estilos = renderBootstrap3 BootstrapBasicForm $ NewEvento
+formEvento :: [(Text, Key Estilo)] -> Form Evento
+formEvento estilos = renderBootstrap3 BootstrapBasicForm $ Evento
     <$> areq textField (FieldSettings "Titulo" Nothing Nothing Nothing [("class", "form-control")]) Nothing
     <*> areq textField (FieldSettings "Localização" Nothing Nothing Nothing [("class", "form-control")]) Nothing
     <*> areq dayField (FieldSettings "Data do evento" Nothing Nothing Nothing [("class", "form-control")]) Nothing
@@ -54,7 +47,7 @@ postEventoNewR = do
 
     case result of
         FormSuccess evento -> do
-            runDB $ insert400 (Evento (newEventoTitulo evento) (newEventoLocalizacao evento) (newEventoDia evento) (newEventoEstiloId evento))
+            runDB $ insert400 evento
             redirect EventoListR
         _ -> redirect HomeR
 
